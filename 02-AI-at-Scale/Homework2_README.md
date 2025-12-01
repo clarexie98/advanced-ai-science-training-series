@@ -1,5 +1,9 @@
 # Homework 2: Tensor Parallelism Analysis
 
+- Try different combinations of model sizes (layer count with ```--n-layers=?```) and tp-degrees (```--tp=?```) to get an idea of what works
+- Document how the performance changes with 8-layer model and TP of 1,2,4 (```--n-layhers=8 --tp=?```)
+
+
 For this assignment, I explored how tensor parallelism affects training performance by running three experiments with an 8-layer transformer model on Polaris. I started with a baseline configuration using TP=1. Then I increased the tensor parallelism to TP=2, splitting the model across pairs of GPUs, and finally TP=4, where all four GPUs collaborated on the same model split into four pieces. Each run used the ezpz framework's FSDP with tensor parallelism support, and I collected timing and performance metrics to compare how the different configurations performed.
 
 ## Results

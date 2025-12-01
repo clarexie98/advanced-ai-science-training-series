@@ -1,5 +1,17 @@
 # Homework 1:
 
+- Make sure that the single GPU code runs on Polaris.
+- The counting of ranks, does not necessarily has to be a mix-and-match between
+`mpi4py` and `PALS`. Try to implement the rank counting method using just 
+`PALS` or `mpi4py`. `device_count()` methods can be useful here.
+- Play with different dimensions of the `src` and `tgt` tensors.
+- Explore the cost of collective communication, by setting up a scenario, 
+where you have only two ranks, but each rank resides on a different node. 
+Profile and try to reason about the results.
+- Try other file formats to explore the I/O bottleneck.
+- Make the tensors really large, specially the 2nd and 3rd dimension and 
+explore different data types.
+
 ## 1. Single GPU 
 
 I implemented `pytorch_single_gpu.py` which runs successfully on Polaris, completing 10 epochs of training in 16.38s on synthetic transformer data.
