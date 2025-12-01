@@ -1,0 +1,12 @@
+# Requirements for clarexie_multi_agent.py
+# Install with: pip install -r requirements.txt
+
+# Core dependencies
+arxiv>=2.0.0
+pubchempy>=1.0.4
+requests>=2.31.0
+
+# LangChain and LangGraph (should already be in the environment)
+# langchain>=0.1.0
+# langchain-openai>=0.0.5
+# langgraph>=0.0.20
