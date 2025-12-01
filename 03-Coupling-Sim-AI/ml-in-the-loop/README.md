@@ -172,3 +172,4 @@ Note that all that should be needed for this exercise is to change the values of
 The script will generate a figure with the results of the active learning loop called `parsl_ml_in_the_loop.png`. Use this figure to determine the performance of your tests. Once ready to submit, simply commit the repository with the updated image showing your best results, which will automatically be populated below in this README file.
 
 ![results](./parsl_ml_in_the_loop.png)
+

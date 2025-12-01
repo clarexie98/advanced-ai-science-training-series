@@ -1,0 +1,59 @@
+
+Lmod is automatically replacing "nvidia/24.11" with "gcc-native/14.2".
+
+
+Lmod is automatically replacing "PrgEnv-nvidia/8.6.0" with "PrgEnv-gnu/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.32
+
+Running parsl ml_in_the_loop.py script
+Will collect a maximum of 30 training samples for training.
+Will run 4 new simulations in each loop iteration to refine the model.
+
+Creating initial training data composed of 10/130258 random molecules
+Submitted 10 simulations for initial training ...
+Training data collected!
+
+Starting active learning loop
+
+Iteration 1:
+	Training on 10/130258 random molecules
+	Best predicted molecule: O=C1CC(=O)N2CC12 with ionization energy 14.36 Ha
+	Performed 4 new simulations
+	Estimate of KNN Model Mean Relative Error (MRE): 0.03 %
+	Finished loop iteration in 7.33s
+
+Iteration 2:
+	Training on 14/130258 random molecules
+	Best predicted molecule: O=CC(=O)N1N=NN=N1 with ionization energy 15.28 Ha
+	Performed 4 new simulations
+	Estimate of KNN Model Mean Relative Error (MRE): 0.11 %
+	Finished loop iteration in 3.38s
+
+Iteration 3:
+	Training on 18/130258 random molecules
+	Best predicted molecule: O=CC(=O)N1N=NN=N1 with ionization energy 15.28 Ha
+	Performed 4 new simulations
+	Estimate of KNN Model Mean Relative Error (MRE): 0.07 %
+	Finished loop iteration in 2.58s
+
+Iteration 4:
+	Training on 22/130258 random molecules
+	Best predicted molecule: O=CC(=O)N1N=NN=N1 with ionization energy 15.28 Ha
+	Performed 4 new simulations
+	Estimate of KNN Model Mean Relative Error (MRE): 0.07 %
+	Finished loop iteration in 3.37s
+
+Iteration 5:
+	Training on 26/130258 random molecules
+	Best predicted molecule: O=CC(=O)N1N=NN=N1 with ionization energy 15.28 Ha
+	Performed 4 new simulations
+	Estimate of KNN Model Mean Relative Error (MRE): 0.07 %
+	Finished loop iteration in 3.02s
+
+Training completed in 32.65 seconds
+
+Plotting results...
+All done!

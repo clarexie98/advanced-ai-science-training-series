@@ -173,9 +173,17 @@ Please note:
 | Parsl + futures | 1   | 0.62   | 14.38 / NA   | 26.59 / NA   |
 | Parsl + file system | 1   | 0.62   | 11.22 / 0.094   | 14.90 / 0.422   |
 | DragonHPC + DDict | 1   | 0.62   | 7.01 / 0.233   | 17.92 / 1.194   |
-| ...   | ...   | ...   | ... / ...  | ... / ...  |
+| Parsl + futures | 1   | 0.16   | 11.41 / NA   | 14.29 / NA   |
+| Parsl + file system | 1   | 0.16   | 12.37 / 0.032   | 81.64 / 0.212   |
+| DragonHPC + DDict | 1   | 0.16   | 6.54 / 0.014   | 37.73 / 0.680   |
+| Parsl + futures | 1   | 5.00   | 33.49 / NA   | 170.83 / NA   |
+| Parsl + file system | 1   | 5.00   | 18.93 / 0.376   | 103.93 / 1.678   |
+| DragonHPC + DDict | 1   | 5.00   | 13.37 / 0.418   | 47.17 / 3.150   |
+| Parsl + futures | 2   | 1.25   | 14.20 / NA   | 82.31 / NA   |
+| Parsl + file system | 2   | 1.25   | 15.56 / 0.119   | 115.30 / 2.246   |
+| DragonHPC + DDict | 2   | 1.25   | 6.78 / 0.142   | 39.87 / 2.127   |
 
 
 **Observations**
 
-Write a short paragraph on your observations based on the results collected in the table above. Which solution is best, depending on the size of data being produced and transferred and the number of nodes used? Does this match your expectations? 
+The experimental results reveal performance differences between the three data transfer approaches. For small data (0.16 GB), Parsl with futures performs best for training (14.29s) despite the serialization overhead, while DragonHPC excels at simulations (6.54s). However, as data size increases to 5 GB, DragonHPC + DDict proved to perform best with 47.17s training time compared to 103.93s for file system and 170.83s for futures, demonstrating that in-memory RDMA transfers scale far better than serialization or file I/O. On multi-node runs (2 nodes, 1.25 GB), DragonHPC + DDict still perform best (39.87s training), showing that RDMA-enabled distributed memory provides efficient inter-node data sharing. This matches expectations that in-memory approaches outperform disk-based solutions for large-scale data transfers.

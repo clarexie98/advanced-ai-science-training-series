@@ -1,0 +1,47 @@
+
+Lmod is automatically replacing "nvidia/24.11" with "gcc-native/14.2".
+
+
+Lmod is automatically replacing "PrgEnv-nvidia/8.6.0" with "PrgEnv-gnu/8.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.32
+
+==========================================
+Scaling Test: 1 node, 32 sims, 256x256 grid
+==========================================
+Running with Parsl writing to the file system
+Launching 32 simulations on 32 workers to generate training data of size 0.16 GB ...
+Done in 12.37 seconds
+IO time: 0.032 seconds
+
+Launching 4 CNN models to train on the simulaiton data ...
+Done in 81.64 seconds
+IO time: 0.212 seconds
+
+
+Running with DragonHPC + DDict
+Dragon running on 1 nodes
+['x3109c0s19b0n0'] 
+
+Started DDict on 1 nodes with 151.0 GB of memory
+
+Launching 32 simulations on 32 workers to generate training data of size 0.16 GB ...
+Done in 6.54 seconds
+IO time: 0.014 seconds
+
+Launching 4 CNN models to train on the simulaiton data ...
+Done in 37.73 seconds
+IO time: 0.680 seconds
+
+
+Running with Parsl transferring data through futures
+Launching 32 simulations on 32 workers to generate training data of size 0.16 GB ...
+Done in 11.41 seconds
+
+Launching 4 CNN models to train on the simulaiton data ...
+Done in 14.29 seconds
+
+
+Test complete!
