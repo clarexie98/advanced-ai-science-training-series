@@ -1,318 +1,115 @@
-# SambaNova Homework: Metis vs Sophia Performance Comparison
+# Homework 5: 
 
-## Overview
+## Task 1: Cerebras - Llama-7B Batch Size Comparison
 
-This homework compares the inference performance of the GPT-OSS-120B model on two different platforms:
-- **Metis**: SambaNova SN40L (specialized RDU processors optimized for inference)
-- **Sophia**: ALCF GPU cluster (general-purpose A100 GPUs)
+Run the Llama-7B example for different batch sizes and compare the performance.
 
-**Dataset**: HuggingFace SQuAD (Stanford Question Answering Dataset)
-- URL: https://huggingface.co/datasets/squad
-- Description: Question-answer pairs based on Wikipedia articles
-- Purpose: Tests the model's ability to extract information from context
+**Issue:** Unable to complete due to access user node
+
+I cannot access the Cerebras user nodes (cer-usn-01 or cer-usn-02) from the Cerebras login node. I get "Permission denied (hostbased)" errors when trying to SSH to the user nodes. I attempted to debug and run the homework on the login node, but that didn't work since the CS-3 system needs to be accessed from the user nodes.
+
+I contacted Paige Kinsley and Murali Emani about this issue. Unfortunately, as of the homework deadline (I requested an extention till Dec 5), this access issue remains unresolved.
+
+---
+
+## Task 2: SambaNova - GPT-OSS Performance on Metis vs Sophia
+
+
+
+For the dataset, I used **HuggingFace SQuAD v1.1** (Stanford Question Answering Dataset), which contains question-answer pairs based on Wikipedia articles. I tested 10 prompts from the validation split, all related to Super Bowl 50. The prompts followed the format: "Context: [passage] Question: [question] Answer:" to test extractive question answering.
+
+## Models Used
+- **Metis**: `gpt-oss-120b-131072` 
+- **Sophia**: `openai/gpt-oss-120b` 
+
+### Performance Comparison
+
+| Metric | Metis (SambaNova) | Sophia (GPU) | Ratio |
+|--------|-------------------|--------------|-------|
+| **Mean Latency** | 4.987s | 1.621s | **3.07× faster (Sophia)** |
+| **Median Latency** | 5.044s | 1.761s | 2.86× faster |
+| **Min Latency** | 4.465s | 0.597s | 7.48× faster |
+| **Max Latency** | 5.535s | 3.133s | 1.77× faster |
+| **Throughput** | 65.37 tokens/sec | 203.98 tokens/sec | **3.12× higher (Sophia)** |
+| **Avg Response Length** | 326.0 tokens | 330.7 tokens | Similar |
+| **Success Rate** | 10/10 (100%) | 10/10 (100%) | Equal |
+
+Sophia (GPU) significantly outperformed Metis, delivering responses 3× faster with 3× higher throughput. Both platforms achieved 100% success rate with similar response quality.
+
+### Analysis
+
+The results were initially surprising since SambaNova markets their RDUs as inference-optimized hardware, yet Sophia outperformed Metis by 3×. After digging into the results, I realized the performance gap comes down to workload mismatch. My benchmark tested single requests with short answers (37-179 characters), which is exactly what GPUs are optimized for - low-latency individual requests using tensor cores. SambaNova's dataflow architecture, on the other hand, is designed for high-throughput batch processing where multiple requests flow through the pipeline simultaneously. I essentially tested Sophia's strength while bypassing Metis's advantages.
+
+The model variants also played a role. Metis uses the 131k token context window variant while Sophia uses the standard 32k version. That longer context support adds computational overhead through larger position embeddings and attention matrices, even for my short prompts. The software stack matters too - Sophia runs vLLM with years of GPU-specific optimizations like FlashAttention-2 and PagedAttention, while SambaNova's runtime is less mature. Plus there's the latency variance: Metis showed more consistent performance (std dev 0.311s) compared to Sophia (0.839s), which hints that RDUs might be better for production systems needing predictable SLAs.
+
+Where would Metis actually excel? Probably in high-concurrency scenarios with 100+ simultaneous requests, batch processing workloads, or tasks using that full 131k context window. The dataflow architecture should handle parallel streams more efficiently than GPUs at scale, and RDUs are more power-efficient for sustained high-volume inference. My single-request test is similar to the Homework 3 producer-consumer results - DragonHPC only showed its advantages at large data sizes. You need to test the right workload to see specialized hardware benefits.
+
+
+### Thoughts
+
+The benchmark shows that hardware performance depends heavily on the workload. Sophia won this test because I tested exactly what GPUs are optimized for: low-latency single requests. A fair comparison would need to test batching, concurrency, and long-context scenarios where SambaNova's architecture should shine. This is similar to how the DragonHPC + DDict approach in Homework 3 only showed its advantages at large data sizes - you need to test the right workload to see the benefits of specialized hardware.
+
+This result was initially surprising since SambaNova markets their RDUs as inference-optimized hardware. After analyzing the results, here are the key factors:
+
+### 1. Workload Characteristics
+- I tested single requests (not batched)
+- Short answers (37-179 characters)
+- GPUs excel at low-latency, single-request inference
+- SambaNova's dataflow architecture is designed for high-throughput batching, which I didn't test
+
+### 2. Model Variant Differences
+- Metis uses the 131k token context window variant
+- Sophia uses the standard 32k context window
+- Longer context support adds computational overhead (larger position embeddings, attention matrices) even for short prompts like mine
+
+### 3. Software Stack Maturity
+- Sophia uses vLLM, a highly optimized GPU inference framework with FlashAttention-2 and PagedAttention
+- vLLM has years of GPU-specific optimizations
+- SambaNova's runtime is less mature and publicly documented
+
+### 4. Hardware Utilization
+- Single requests fully utilize GPU tensor cores for matrix operations
+- RDU's dataflow architecture is designed to excel when processing many requests simultaneously (pipeline parallelism)
+- My test didn't leverage Metis's strengths
+
+## When Would Metis Excel?
+
+Based on the architecture differences, Metis would likely outperform Sophia in these scenarios:
+- **High-concurrency workloads** (100+ concurrent requests) - Dataflow architecture handles parallel streams efficiently
+- **Batch processing** (processing 1000s of requests together) - RDU optimized for throughput over latency
+- **Very long context tasks** (using the 131k token capacity) - Metis built to handle extended contexts
+- **Cost-sensitive deployments** (lower power consumption per token at scale) - RDU more power-efficient than GPUs
+- **Deterministic latency** (production systems needing consistent SLAs) - Less variance than GPU (std dev: 0.311s vs 0.839s)
+
+My single-request benchmark essentially tested Sophia's strengths while bypassing Metis's advantages. A more comprehensive benchmark would test batching, concurrency, and long-context scenarios.
+
+
 
 ## Files
 
-- `compare_metis_sophia.py` - Main benchmark script
-- `Homework5_Analysis.md` - Analysis and findings (to be created after running)
+- `compare_metis_sophia.py` - Benchmark script that loads SQuAD and tests both platforms
+- `setup_env.sh` - Installs the HuggingFace datasets package
+- `metis_vs_sophia_results_*.json` - Raw results with per-request latency and token counts
 
-## Setup Instructions
-
-### 1. Navigate to the SambaNova directory
+## How to Run
 
 ```bash
 cd /home/clarexie/2025/advanced-ai-science-training-series/05-AITestbed/SambaNova
-```
 
-### 2. Ensure authentication is set up
+# First time setup (installs datasets package)
+./setup_env.sh
 
-```bash
-cd ../
-python inference_auth_token.py authenticate
-```
-
-If you've already authenticated (which you have from Homework 4), you're good to go!
-
-### 3. Verify token is valid
-
-```bash
-python inference_auth_token.py get_time_until_token_expiration --units hours
-```
-
-## Running the Benchmark
-
-### Default Test (10 samples from SQuAD)
-
-```bash
-cd SambaNova
+# Run benchmark
 source ../../04-Inference-Workflows/Agentic-workflows/0_activate_env.sh
 python compare_metis_sophia.py
 ```
 
-This runs 10 SQuAD samples on both Metis and Sophia (~3-5 minutes).
+The script will:
+1. Download SQuAD v1.1 from HuggingFace
+2. Test 10 prompts on Metis (takes ~50 seconds)
+3. Wait 5 seconds
+4. Test the same 10 prompts on Sophia (takes ~16 seconds)
+5. Print comparison report
+6. Save detailed results to JSON file
 
-### Custom Sample Size
 
-Edit `compare_metis_sophia.py` line 354:
-```python
-# Change num_samples parameter:
-dataset_samples = load_huggingface_dataset(num_samples=10)  # Change 10 to desired number
-```
-
-Then run:
-```bash
-python compare_metis_sophia.py
-```
-
-## What the Script Does
-
-1. **Loads HuggingFace Dataset**: 
-   - Automatically downloads SQuAD v1.1 from HuggingFace
-   - Uses 10 question-answer samples (configurable)
-   - Each sample includes context passage and a question
-   - Format: "Context: [passage]\n\nQuestion: [question]\n\nAnswer:"
-
-2. **Benchmarks Metis (SambaNova)**:
-   - Model: `gpt-oss-120b-131072` (longer context window)
-   - Endpoint: https://inference-api.alcf.anl.gov/resource_server/metis/api/v1
-   - Measures latency (time to first token + generation)
-   - Collects token usage statistics
-   - Records response quality
-
-3. **Benchmarks Sophia (GPU Cluster)**:
-   - Model: `openai/gpt-oss-120b`
-   - Endpoint: https://data-portal-dev.cels.anl.gov/resource_server/sophia/vllm/v1
-   - Repeats the same prompts for fair comparison
-   - Collects same metrics
-
-4. **Calculates Statistics**:
-   - Mean, min, max, median latency
-   - Throughput (tokens/second)
-   - Success rates
-   - Speedup factor
-
-5. **Generates Report**:
-   - Console output with formatted comparison table
-   - JSON file with detailed results
-   - Timestamp for tracking
-
-## Expected Output
-
-You'll see output like this:
-
-```
-======================================================================
-Benchmarking METIS
-======================================================================
-
-[1/5] Testing prompt: Explain the concept of quantum entanglement...
-  Run 1: 2.345s, 487 tokens, Response length: 1853 chars
-
-[2/5] Testing prompt: What is the difference between supervised...
-  Run 1: 1.987s, 423 tokens, Response length: 1645 chars
-
-...
-
-======================================================================
-PERFORMANCE COMPARISON REPORT
-======================================================================
-
-📊 LATENCY COMPARISON (seconds)
-Metric               Metis (SambaNova)         Sophia (GPU)         
-----------------------------------------------------------------------
-Mean Latency                          2.156                    3.421
-Min Latency                           1.987                    2.876
-Max Latency                           2.543                    4.123
-Median Latency                        2.234                    3.387
-
-🚀 THROUGHPUT COMPARISON
-Metric               Metis (SambaNova)         Sophia (GPU)         
-----------------------------------------------------------------------
-Tokens/sec                           212.34                   142.67
-Avg tokens/req                        458.2                    487.3
-
-✅ SUCCESS RATE
-Metric               Metis (SambaNova)         Sophia (GPU)         
-----------------------------------------------------------------------
-Successful                                 5                        5
-Failed                                     0                        0
-
-⚡ SPEEDUP: Metis is 1.59x faster than Sophia
-
-💾 Detailed results saved to: metis_vs_sophia_results_20251201_143022.json
-```
-
-## Analyzing Results
-
-After running, you should observe:
-
-### Expected Performance Patterns
-
-**Metis (SambaNova) Advantages:**
-- **Lower latency** - RDU processors optimized for inference
-- **Higher throughput** - Purpose-built dataflow architecture
-- **Consistent performance** - Less variance in response times
-- **Lower power consumption** - Specialized silicon vs GPUs
-
-**Sophia (GPU) Characteristics:**
-- **General-purpose** - A100s designed for training AND inference
-- **Flexible** - Can run diverse workloads
-- **Potentially higher latency** - Not inference-optimized
-- **Good for small batches** - But Metis excels at single-request throughput
-
-### Key Metrics to Compare
-
-1. **Mean Latency**: Average time per request
-2. **Throughput**: Tokens generated per second
-3. **Consistency**: Standard deviation of latencies
-4. **Response Quality**: Compare actual responses (manual review)
-
-## Using the Web UI for Qualitative Testing
-
-While the script measures quantitative performance, you can also test qualitatively:
-
-### 1. Access the Web UI
-
-Go to: https://inference.alcf.anl.gov/
-
-### 2. Test Metis Model
-
-- Select `gpt-oss-120b-131072` (Metis)
-- Ask one of the scientific questions
-- Note the response time and quality
-
-### 3. Test Sophia Model
-
-- Select `openai/gpt-oss-120b` (Sophia)  
-- Ask the SAME question
-- Compare response time and quality
-
-### 4. Document Observations
-
-Note any differences in:
-- Response latency (perceived speed)
-- Answer quality/accuracy
-- Answer length/detail
-- Ability to handle complex questions
-
-## Understanding the Differences
-
-### Hardware Architecture
-
-**SambaNova RDU (Reconfigurable Dataflow Unit)**:
-- Dataflow architecture (vs control flow in GPUs)
-- Optimized for inference workloads
-- Lower precision (INT8/FP16) for speed
-- Dedicated memory hierarchy
-
-**NVIDIA A100 GPU**:
-- CUDA-based parallel processing
-- Designed for training (higher precision)
-- General-purpose tensor cores
-- Shared memory across workloads
-
-### Why Metis Should Be Faster
-
-1. **Dataflow Optimization**: RDUs execute operations as data arrives, reducing latency
-2. **Lower Precision**: Inference-optimized with INT8 quantization
-3. **No Context Switching**: Dedicated inference workload
-4. **Optimized Memory**: Faster data movement for transformer models
-
-### Possible Scenarios Where Sophia Might Compete
-
-1. **Batch Processing**: GPUs excel at large batch sizes
-2. **Complex Reasoning**: Higher precision might help edge cases
-3. **Multi-task**: GPU handles diverse workloads simultaneously
-4. **Memory-bound Tasks**: A100 has 80GB HBM2e
-
-## Homework Deliverables
-
-After running the benchmark, create:
-
-1. **`Homework5_Analysis.md`** with:
-   - Summary of findings
-   - Performance comparison table
-   - Analysis of why differences occur
-   - Hardware architecture comparison
-   - Use cases for each platform
-
-2. **JSON results file** (auto-generated by script)
-
-3. **Optional**: Screenshots from Web UI testing
-
-## Troubleshooting
-
-### Authentication Issues
-
-```bash
-# Re-authenticate if token expired
-cd /home/clarexie/2025/advanced-ai-science-training-series/05-AITestbed
-python inference_auth_token.py authenticate --force
-```
-
-### Model Not Found
-
-If you get model errors, check available models:
-
-```bash
-access_token=$(python ../inference_auth_token.py get_access_token)
-curl -X GET "https://inference-api.alcf.anl.gov/resource_server/list-endpoints" \
-     -H "Authorization: Bearer ${access_token}" | jq -C '.'
-```
-
-### Connection Timeouts
-
-If requests timeout:
-- Reduce number of prompts in script
-- Add longer delays between requests
-- Check network connection
-
-### Import Errors
-
-Make sure you're in the correct directory:
-```bash
-cd /home/clarexie/2025/advanced-ai-science-training-series/05-AITestbed/SambaNova
-```
-
-The script looks for `inference_auth_token.py` in the parent directory.
-
-## Advanced Options
-
-### Use a Different HuggingFace Dataset
-
-To use an actual HuggingFace dataset, modify the script:
-
-```python
-from datasets import load_dataset
-
-# Load dataset
-dataset = load_dataset("squad", split="validation[:100]")
-
-# Extract prompts
-prompts = [f"Answer this question: {item['question']}" 
-           for item in dataset]
-```
-
-### Adjust Parameters
-
-In the script, you can modify:
-- `temperature`: Control randomness (0.0-1.0)
-- `max_tokens`: Limit response length
-- `num_runs`: Run multiple times per prompt for statistics
-
-### Test Different Models
-
-Try comparing:
-- `gpt-oss-120b-131072` (Metis version with longer context)
-- `Llama-4-Maverick-17B-128E-Instruct` (smaller model)
-
-## Next Steps
-
-1. Run the quick test (5 prompts)
-2. Review the console output
-3. Examine the JSON results file
-4. Run the full test (15 prompts) if time permits
-5. Write your analysis in `Homework5_Analysis.md`
-6. Commit and push to GitHub
-
-Good luck! 🚀
