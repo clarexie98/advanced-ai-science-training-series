@@ -1,0 +1,361 @@
+{
+  "timestamp": "2025-12-01T19:15:58.240804",
+  "dataset": {
+    "name": "SQuAD",
+    "version": "1.1",
+    "source": "HuggingFace",
+    "url": "https://huggingface.co/datasets/squad",
+    "num_samples": 10,
+    "description": "Stanford Question Answering Dataset - questions based on Wikipedia articles"
+  },
+  "models": {
+    "metis": "gpt-oss-120b-131072",
+    "sophia": "openai/gpt-oss-120b"
+  },
+  "metis": {
+    "results": [
+      {
+        "endpoint": "metis",
+        "prompt_id": 1,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: Which NFL team represented the AFC at Super Bowl 50?\n\nAnswer:",
+        "run": 1,
+        "response": "The AFC was represented by the **Denver Broncos**.",
+        "latency_sec": 5.535301923751831,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "stop",
+          "prompt_tokens": 249,
+          "completion_tokens": 53,
+          "total_tokens": 302
+        }
+      },
+      {
+        "endpoint": "metis",
+        "prompt_id": 2,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: Which NFL team represented the NFC at Super Bowl 50?\n\nAnswer:",
+        "run": 1,
+        "response": "The NFC was represented by the **Carolina Panthers** at Super Bowl\u202f50.",
+        "latency_sec": 5.023343801498413,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "stop",
+          "prompt_tokens": 249,
+          "completion_tokens": 58,
+          "total_tokens": 307
+        }
+      },
+      {
+        "endpoint": "metis",
+        "prompt_id": 3,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: Where did Super Bowl 50 take place?\n\nAnswer:",
+        "run": 1,
+        "response": "Super Bowl\u202f50 was played at **Levi\u2019s Stadium in Santa Clara, California** (in the San\u202fFrancisco Bay Area).",
+        "latency_sec": 4.46454930305481,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "stop",
+          "prompt_tokens": 246,
+          "completion_tokens": 106,
+          "total_tokens": 352
+        }
+      },
+      {
+        "endpoint": "metis",
+        "prompt_id": 4,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: Which NFL team won Super Bowl 50?\n\nAnswer:",
+        "run": 1,
+        "response": "The Denver\u202fBroncos won Super Bowl\u202f50.",
+        "latency_sec": 5.038357734680176,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "stop",
+          "prompt_tokens": 246,
+          "completion_tokens": 30,
+          "total_tokens": 276
+        }
+      },
+      {
+        "endpoint": "metis",
+        "prompt_id": 5,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: What color was used to emphasize the 50th anniversary of the Super Bowl?\n\nAnswer:",
+        "run": 1,
+        "response": "The 50th\u2011anniversary celebration was highlighted with **gold**\u2014the league used gold\u2011themed branding to mark the \u201cgolden anniversary.\u201d",
+        "latency_sec": 5.019041538238525,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "stop",
+          "prompt_tokens": 253,
+          "completion_tokens": 84,
+          "total_tokens": 337
+        }
+      },
+      {
+        "endpoint": "metis",
+        "prompt_id": 6,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: What was the theme of Super Bowl 50?\n\nAnswer:",
+        "run": 1,
+        "response": "The theme of Super Bowl\u202f50 was a **\u201cgolden anniversary\u201d** celebration\u2014highlighting the league\u2019s 50\u2011year milestone with gold\u2011colored branding and related \u201cgold\u2011themed\u201d initiatives.",
+        "latency_sec": 5.136062860488892,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "stop",
+          "prompt_tokens": 247,
+          "completion_tokens": 132,
+          "total_tokens": 379
+        }
+      },
+      {
+        "endpoint": "metis",
+        "prompt_id": 7,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: What day was the game played on?\n\nAnswer:",
+        "run": 1,
+        "response": "The game was played on **Sunday, February\u202f7,\u202f2016**.",
+        "latency_sec": 5.064243793487549,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "stop",
+          "prompt_tokens": 245,
+          "completion_tokens": 113,
+          "total_tokens": 358
+        }
+      },
+      {
+        "endpoint": "metis",
+        "prompt_id": 8,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: What is the AFC short for?\n\nAnswer:",
+        "run": 1,
+        "response": "AFC stands for **American Football Conference**.",
+        "latency_sec": 5.044082403182983,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "stop",
+          "prompt_tokens": 244,
+          "completion_tokens": 54,
+          "total_tokens": 298
+        }
+      },
+      {
+        "endpoint": "metis",
+        "prompt_id": 9,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: What was the theme of Super Bowl 50?\n\nAnswer:",
+        "run": 1,
+        "response": "The theme of Super Bowl\u202f50 was the **\u201cgolden anniversary\u201d**\u2014the NFL highlighted the 50\u2011year milestone with gold\u2011themed branding and celebrations.",
+        "latency_sec": 5.078694105148315,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "stop",
+          "prompt_tokens": 247,
+          "completion_tokens": 114,
+          "total_tokens": 361
+        }
+      },
+      {
+        "endpoint": "metis",
+        "prompt_id": 10,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: What does AFC stand for?\n\nAnswer:",
+        "run": 1,
+        "response": "AFC stands for **American Football Conference**.",
+        "latency_sec": 4.4696409702301025,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "stop",
+          "prompt_tokens": 243,
+          "completion_tokens": 47,
+          "total_tokens": 290
+        }
+      }
+    ],
+    "statistics": {
+      "num_requests": 10,
+      "successful_requests": 10,
+      "failed_requests": 0,
+      "latency": {
+        "mean": 4.987331843376159,
+        "min": 4.46454930305481,
+        "max": 5.535301923751831,
+        "median": 5.044082403182983
+      },
+      "tokens": {
+        "mean": 326.0,
+        "total": 3260
+      },
+      "response_length": {
+        "mean": 86.8
+      },
+      "throughput_tokens_per_sec": 65.36561236304566
+    }
+  },
+  "sophia": {
+    "results": [
+      {
+        "endpoint": "sophia",
+        "prompt_id": 1,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: Which NFL team represented the AFC at Super Bowl 50?\n\nAnswer:",
+        "run": 1,
+        "response": "The AFC was represented by the **Denver\u202fBroncos** at Super Bowl\u202f50.",
+        "latency_sec": 3.133265256881714,
+        "metadata": {
+          "model": "openai/gpt-oss-120b",
+          "finish_reason": "stop",
+          "prompt_tokens": 251,
+          "completion_tokens": 43,
+          "total_tokens": 294
+        }
+      },
+      {
+        "endpoint": "sophia",
+        "prompt_id": 2,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: Which NFL team represented the NFC at Super Bowl 50?\n\nAnswer:",
+        "run": 1,
+        "response": "The NFC was represented by the **Carolina Panthers** at Super Bowl\u202f50.",
+        "latency_sec": 1.9697184562683105,
+        "metadata": {
+          "model": "openai/gpt-oss-120b",
+          "finish_reason": "stop",
+          "prompt_tokens": 251,
+          "completion_tokens": 70,
+          "total_tokens": 321
+        }
+      },
+      {
+        "endpoint": "sophia",
+        "prompt_id": 3,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: Where did Super Bowl 50 take place?\n\nAnswer:",
+        "run": 1,
+        "response": "Super\u202fBowl\u202f50 was held at **Levi\u2019s Stadium in Santa\u202fClara, California** (in the San\u202fFrancisco Bay Area).",
+        "latency_sec": 1.5750625133514404,
+        "metadata": {
+          "model": "openai/gpt-oss-120b",
+          "finish_reason": "stop",
+          "prompt_tokens": 248,
+          "completion_tokens": 116,
+          "total_tokens": 364
+        }
+      },
+      {
+        "endpoint": "sophia",
+        "prompt_id": 4,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: Which NFL team won Super Bowl 50?\n\nAnswer:",
+        "run": 1,
+        "response": "The Denver\u202fBroncos won Super Bowl\u202f50.",
+        "latency_sec": 1.0293197631835938,
+        "metadata": {
+          "model": "openai/gpt-oss-120b",
+          "finish_reason": "stop",
+          "prompt_tokens": 248,
+          "completion_tokens": 44,
+          "total_tokens": 292
+        }
+      },
+      {
+        "endpoint": "sophia",
+        "prompt_id": 5,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: What color was used to emphasize the 50th anniversary of the Super Bowl?\n\nAnswer:",
+        "run": 1,
+        "response": "The 50th\u2011anniversary celebration was highlighted with **gold**.",
+        "latency_sec": 1.14662766456604,
+        "metadata": {
+          "model": "openai/gpt-oss-120b",
+          "finish_reason": "stop",
+          "prompt_tokens": 255,
+          "completion_tokens": 70,
+          "total_tokens": 325
+        }
+      },
+      {
+        "endpoint": "sophia",
+        "prompt_id": 6,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: What was the theme of Super Bowl 50?\n\nAnswer:",
+        "run": 1,
+        "response": "The theme of Super Bowl\u202f50 was the league\u2019s **\u201cgolden anniversary\u201d** celebration\u2014marking the 50th edition of the game with gold\u2011colored branding and other gold\u2011themed initiatives.",
+        "latency_sec": 1.861565113067627,
+        "metadata": {
+          "model": "openai/gpt-oss-120b",
+          "finish_reason": "stop",
+          "prompt_tokens": 249,
+          "completion_tokens": 138,
+          "total_tokens": 387
+        }
+      },
+      {
+        "endpoint": "sophia",
+        "prompt_id": 7,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: What day was the game played on?\n\nAnswer:",
+        "run": 1,
+        "response": "The game was played on **Sunday, February\u202f7,\u202f2016**.",
+        "latency_sec": 2.3961880207061768,
+        "metadata": {
+          "model": "openai/gpt-oss-120b",
+          "finish_reason": "stop",
+          "prompt_tokens": 247,
+          "completion_tokens": 146,
+          "total_tokens": 393
+        }
+      },
+      {
+        "endpoint": "sophia",
+        "prompt_id": 8,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: What is the AFC short for?\n\nAnswer:",
+        "run": 1,
+        "response": "AFC stands for **American Football Conference**.",
+        "latency_sec": 0.7432591915130615,
+        "metadata": {
+          "model": "openai/gpt-oss-120b",
+          "finish_reason": "stop",
+          "prompt_tokens": 246,
+          "completion_tokens": 47,
+          "total_tokens": 293
+        }
+      },
+      {
+        "endpoint": "sophia",
+        "prompt_id": 9,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: What was the theme of Super Bowl 50?\n\nAnswer:",
+        "run": 1,
+        "response": "The theme of Super Bowl\u202f50 was the **\u201cgolden anniversary\u201d**\u2014a celebration of the NFL\u2019s 50th Super Bowl, highlighted by gold\u2011themed branding and promotions.",
+        "latency_sec": 1.7605645656585693,
+        "metadata": {
+          "model": "openai/gpt-oss-120b",
+          "finish_reason": "stop",
+          "prompt_tokens": 249,
+          "completion_tokens": 103,
+          "total_tokens": 352
+        }
+      },
+      {
+        "endpoint": "sophia",
+        "prompt_id": 10,
+        "prompt": "Context: Super Bowl 50 was an American football game to determine the champion of the National Football League (NFL) for the 2015 season. The American Football Conference (AFC) champion Denver Broncos defeated the National Football Conference (NFC) champion Carolina Panthers 24\u201310 to earn their third Super Bowl title. The game was played on February 7, 2016, at Levi's Stadium in the San Francisco Bay Area at Santa Clara, California. As this was the 50th Super Bowl, the league emphasized the \"golden anniversary\" with various gold-themed initiatives, as well as temporarily suspending the tradition of naming each Super Bowl game with Roman numerals (under which the game would have been known as \"Super Bowl L\"), so that the logo could prominently feature the Arabic numerals 50.\n\nQuestion: What does AFC stand for?\n\nAnswer:",
+        "run": 1,
+        "response": "AFC stands for **American Football Conference**.",
+        "latency_sec": 0.596717119216919,
+        "metadata": {
+          "model": "openai/gpt-oss-120b",
+          "finish_reason": "stop",
+          "prompt_tokens": 245,
+          "completion_tokens": 41,
+          "total_tokens": 286
+        }
+      }
+    ],
+    "statistics": {
+      "num_requests": 10,
+      "successful_requests": 10,
+      "failed_requests": 0,
+      "latency": {
+        "mean": 1.6212287664413452,
+        "min": 0.596717119216919,
+        "max": 3.133265256881714,
+        "median": 1.7605645656585693
+      },
+      "tokens": {
+        "mean": 330.7,
+        "total": 3307
+      },
+      "response_length": {
+        "mean": 82.3
+      },
+      "throughput_tokens_per_sec": 203.98108326556422
+    }
+  }
+}

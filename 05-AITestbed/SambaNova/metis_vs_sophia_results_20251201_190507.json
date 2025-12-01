@@ -1,0 +1,123 @@
+{
+  "timestamp": "2025-12-01T19:05:07.410594",
+  "metis": {
+    "results": [
+      {
+        "endpoint": "metis",
+        "prompt_id": 1,
+        "prompt": "Explain the concept of quantum entanglement in simple terms.",
+        "run": 1,
+        "response": "**Quantum entanglement in a nutshell**\n\nImagine you have two magic dice that always show the same number, no matter how far apart they are. If you roll one in New\u202fYork and instantly see a \u201c3\u201d, the other die\u2014sitting in Tokyo\u2014will also be a \u201c3\u201d, even though nothing has traveled between them.  \n\nThat \u201calways\u2011matching\u201d behavior is what physicists call **quantum entanglement**. It\u2019s a special relationship that can exist between tiny particles (like photons, electrons, or atoms) where the state of one particle is instantly linked to the state of the other, no matter the distance separating them.\n\n---\n\n### How it works (very simply)\n\n1. **Creating the pair**  \n   - Two particles are produced together in a way that forces them into a *joint* quantum state. Think of it like baking a single cake and then cutting it into two pieces\u2014each piece on its own isn\u2019t a whole cake, but together they are.\n\n2. **The joint state is \u201cshared\u201d**  \n   - In the quantum world, particles don\u2019t have definite properties (like \u201cspin up\u201d or \u201cspin down\u201d) until we measure them. Instead, the pair exists in a *superposition* of possibilities, and the possibilities are correlated. For example, the pair might be in a superposition of \u201cboth spin\u2011up\u201d **or** \u201cboth spin\u2011down\u201d.\n\n3. **Measuring one particle**  \n   - When you finally look at (measure) one particle, its property becomes definite\u2014say you find it spin\u2011up. Because the two particles were entangled, the other particle\u2019s property is instantly fixed too: it must be spin\u2011down (or the opposite, depending on how they were prepared). The outcome isn\u2019t because a signal traveled between them; it\u2019s because the two particles were already described by a single, inseparable quantum state.\n\n4. **Distance doesn\u2019t matter**  \n   - You can separate the particles by a few centimeters, a few kilometers, or even put one on a satellite and the other on Earth. The correlation remains, and the measurement on one side still instantly determines the result on the other side.\n",
+        "latency_sec": 6.6438610553741455,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "length",
+          "prompt_tokens": 79,
+          "completion_tokens": 512,
+          "total_tokens": 591
+        }
+      },
+      {
+        "endpoint": "metis",
+        "prompt_id": 2,
+        "prompt": "What is the difference between supervised and unsupervised machine learning?",
+        "run": 1,
+        "response": "**Supervised vs. Unsupervised Machine Learning**\n\n| Aspect | Supervised Learning | Unsupervised Learning |\n|--------|---------------------|-----------------------|\n| **Goal** | Learn a mapping **input \u2192 output** (predict a label or a numeric value). | Discover **hidden structure** in the data (groupings, patterns, low\u2011dimensional representations). |\n| **Training data** | **Labeled** examples: each input vector *x* is paired with a target *y* (class label, regression value, etc.). | **Unlabeled** examples: only the input vectors *x* are available. |\n| **Typical tasks** | \u2022 Classification (spam vs. not\u2011spam) <br>\u2022 Regression (price prediction) <br>\u2022 Sequence labeling, object detection, translation | \u2022 Clustering (customer segmentation) <br>\u2022 Dimensionality reduction (PCA, t\u2011SNE) <br>\u2022 Anomaly detection <br>\u2022 Density estimation, generative modeling |\n| **How the model learns** | Minimizes a **supervised loss** (e.g., cross\u2011entropy, mean\u2011squared error) that measures the discrepancy between predicted and true targets. | Optimizes an **intrinsic criterion** (e.g., intra\u2011cluster similarity, reconstruction error, likelihood) that does not depend on external labels. |\n| **Evaluation** | Straightforward: use a held\u2011out labeled test set \u2192 accuracy, F1, RMSE, etc. | Indirect: internal metrics (silhouette score, Davies\u2011Bouldin), downstream task performance, or visual inspection. |\n| **Common algorithms** | \u2022 Linear/Logistic Regression <br>\u2022 Support Vector Machines <br>\u2022 Decision Trees / Random Forests <br>\u2022 Gradient Boosting (XGBoost, LightGBM) <br>\u2022 Neural Networks (CNNs, RNNs, Transformers) | \u2022 k\u2011Means, Hierarchical Clustering, DBSCAN <br>\u2022 Principal Component Analysis (PCA) <br>\u2022 Autoencoders, Variational Autoencoders <br>\u2022 Gaussian Mixture Models <br>\u2022 Self\u2011Organizing Maps <br>\u2022 Topic models (L",
+        "latency_sec": 6.208089828491211,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "length",
+          "prompt_tokens": 80,
+          "completion_tokens": 512,
+          "total_tokens": 592
+        }
+      },
+      {
+        "endpoint": "metis",
+        "prompt_id": 3,
+        "prompt": "Describe the process of photosynthesis step by step.",
+        "run": 1,
+        "response": "**Photosynthesis \u2013 A Step\u2011by\u2011Step Overview**  \n*(Typical C\u2083 photosynthesis in a green plant\u2019s chloroplast)*  \n\n---\n\n## 1. Where it Happens  \n- **Organelle:** Chloroplasts (specifically the thylakoid membranes and the stroma).  \n- **Key pigments:** Chlorophyll a, chlorophyll b, carotenoids (capture light energy).  \n\n---\n\n## 2. The Two Major Phases  \n\n| Phase | Location | Main Purpose | Primary Products |\n|-------|----------|--------------|------------------|\n| **Light\u2011dependent reactions** | Thylakoid membranes | Convert light energy into chemical energy (ATP, NADPH) and release O\u2082 | ATP, NADPH, O\u2082 |\n| **Calvin\u2011Benson (light\u2011independent) cycle** | Stroma | Use ATP\u202f+\u202fNADPH to fix CO\u2082 into carbohydrate (G3P) | Glyceraldehyde\u20113\u2011phosphate (G3P) \u2192 glucose, starch, etc. |\n\n---\n\n## 3. Light\u2011Dependent Reactions (Steps 1\u20118)\n\n1. **Photon Capture**  \n   - Light photons strike **photosystem II (PSII)** and **photosystem I (PSI)**.  \n   - Chlorophyll a molecules (P680 in PSII, P700 in PSI) become excited to a higher energy state.\n\n2. **Water Splitting (Photolysis) \u2013 PSII**  \n   - The excited P680* transfers an electron to the primary electron acceptor.  \n   - To replace the lost electron, the oxygen\u2011evolving complex of PSII splits **2\u202fH\u2082O \u2192 4\u202fH\u207a + 4\u202fe\u207b + O\u2082**.  \n   - O\u2082 diffuses out of the leaf as a by\u2011product.\n\n3. **Primary Electron Transport (PSII \u2192 Plastoquinone)**",
+        "latency_sec": 6.115565061569214,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "length",
+          "prompt_tokens": 77,
+          "completion_tokens": 512,
+          "total_tokens": 589
+        }
+      },
+      {
+        "endpoint": "metis",
+        "prompt_id": 4,
+        "prompt": "What are the key differences between DNA and RNA?",
+        "run": 1,
+        "response": "**DNA vs. RNA \u2013 the main contrasts**\n\n| Feature | DNA (Deoxyribonucleic acid) | RNA (Ribonucleic acid) |\n|---------|-----------------------------|------------------------|\n| **Sugar in backbone** | Deoxyribose (lacks a 2\u2032\u2011OH group) | Ribose (has a 2\u2032\u2011OH group) |\n| **Nitrogenous bases** | Adenine (A), Thymine (T), Cytosine (C), Guanine (G) | Adenine (A), Uracil (U) instead of T, Cytosine (C), Guanine (G) |\n| **Strand structure** | Usually double\u2011stranded (B\u2011form helix) | Usually single\u2011stranded; can fold into hairpins, loops, and double\u2011stranded regions |\n| **Overall shape** | Long, stable, high\u2011molecular\u2011weight polymer (\u22482\u202fm) | Shorter, more flexible polymers (mRNA ~1\u20112\u202fkb; tRNA ~70\u202fnt; rRNA 5\u20115\u202fkb) |\n| **Stability** | Chemically stable (no 2\u2032\u2011OH \u2192 less prone to hydrolysis) | Less stable (2\u2032\u2011OH makes the backbone susceptible to alkaline hydrolysis) |\n| **Cellular location** | Primarily in the nucleus (eukaryotes); also in mitochondria & chloroplasts | Synthesized in nucleus (eukaryotes) then exported; also found in cytoplasm, mitochondria, chloroplasts, and as viral genomes |\n| **Primary biological role** | Stores the long\u2011term genetic information; template for replication | Carries out many functions: <br>\u2022 **mRNA** \u2013 temporary copy of a gene for translation <br>\u2022 **tRNA** \u2013 adaptor that brings amino acids to ribosomes <br>\u2022 **rRNA** \u2013 structural & catalytic core of ribosomes <br>\u2022 **Regulatory RNAs** (miRNA, siRNA, lncRNA, etc.) |\n| **Replication vs. transcription** | Replicates itself (semi\u2011",
+        "latency_sec": 6.021364212036133,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "length",
+          "prompt_tokens": 77,
+          "completion_tokens": 512,
+          "total_tokens": 589
+        }
+      },
+      {
+        "endpoint": "metis",
+        "prompt_id": 5,
+        "prompt": "Explain Newton's three laws of motion with examples.",
+        "run": 1,
+        "response": "## Newton\u2019s Three Laws of Motion  \n\nIsaac\u202fNewton (1642\u20111727) codified the way objects behave when forces act on them in his *Philosophi\u00e6 Naturalis Principia Mathematica* (1687).  \nThe three laws are simple statements, but together they form the foundation of classical mechanics and explain everything from a child\u2019s swing to the motion of planets and rockets.\n\n| Law | Statement (plain language) | Formal statement (physics) | Everyday example |\n|-----|----------------------------|----------------------------|------------------|\n| **1st \u2013 Law of Inertia** | An object will keep doing whatever it\u2019s already doing\u2014staying still or moving in a straight line at constant speed\u2014unless a net external force pushes or pulls on it. | \\(\\displaystyle \\sum \\mathbf{F}=0 \\;\\Longrightarrow\\; \\mathbf{a}=0\\)  (no net force \u2192 no acceleration) | **A book on a table** stays at rest because the forces on it (gravity downward, normal force upward) cancel. **A hockey puck sliding on ice** keeps gliding (almost) in a straight line until friction or a stick applies a force. |\n| **2nd \u2013 Law of Acceleration** | The acceleration of an object is proportional to the total force acting on it and inversely proportional to its mass. The direction of the acceleration is the same as the direction of the net force. | \\(\\displaystyle \\mathbf{F}_{\\text{net}} = m\\,\\mathbf{a}\\)  (or \\(\\mathbf{a}= \\mathbf{F}_{\\text{net}}/m\\)) | **Pushing a shopping cart**: A light cart (small \\(m\\)) speeds up quickly with a modest push; a loaded cart (large \\(m\\)) needs a stronger push for the same acceleration. **Car braking**: The braking force produces a deceleration \\(a = F_{\\text{br",
+        "latency_sec": 5.880632638931274,
+        "metadata": {
+          "model": "gpt-oss-120b-131072",
+          "finish_reason": "length",
+          "prompt_tokens": 77,
+          "completion_tokens": 512,
+          "total_tokens": 589
+        }
+      }
+    ],
+    "statistics": {
+      "num_requests": 5,
+      "successful_requests": 5,
+      "failed_requests": 0,
+      "latency": {
+        "mean": 6.173902559280395,
+        "min": 5.880632638931274,
+        "max": 6.6438610553741455,
+        "median": 6.115565061569214
+      },
+      "tokens": {
+        "mean": 590.0,
+        "total": 2950
+      },
+      "response_length": {
+        "mean": 1672.8
+      },
+      "throughput_tokens_per_sec": 95.56354256241582
+    }
+  },
+  "sophia": {
+    "results": [],
+    "statistics": {
+      "num_requests": 0,
+      "successful_requests": 0,
+      "failed_requests": 0,
+      "latency": {
+        "mean": 0,
+        "min": 0,
+        "max": 0,
+        "median": 0
+      },
+      "tokens": {
+        "mean": 0,
+        "total": 0
+      },
+      "response_length": {
+        "mean": 0
+      },
+      "throughput_tokens_per_sec": 0
+    }
+  }
+}
