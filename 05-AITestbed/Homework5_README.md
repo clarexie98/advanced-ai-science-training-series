@@ -4,11 +4,27 @@
 
 Run the Llama-7B example for different batch sizes and compare the performance.
 
-**Issue:** Unable to complete due to access user node
+### Setup
+I created a batch comparison experiments with the following scripts:
 
-I cannot access the Cerebras user nodes (cer-usn-01 or cer-usn-02) from the Cerebras login node. I get "Permission denied (hostbased)" errors when trying to SSH to the user nodes. I attempted to debug and run the homework on the login node, but that didn't work since the CS-3 system needs to be accessed from the user nodes.
+- `create_configs.sh` - Generates config files for different batch sizes (256, 512, 1024, 2048)
+- `run_single_batch.sh` - Submits individual training jobs and saves logs
+- `parse_results.py` - Extracts and compares performance metrics from training logs
 
-I contacted Paige Kinsley and Murali Emani about this issue. Unfortunately, as of the homework deadline (I requested an extention till Dec 5), this access issue remains unresolved.
+All experiments ran on Cerebras CS-3 using Release 2.6.0 with the Llama-7B model for 200 training steps. 
+
+### Results
+
+| Batch Size | Avg Rate (samples/sec) | Global Rate (samples/sec) | Total Time (seconds) | Throughput (samples/sec) | Final Loss |
+|------------|------------------------|---------------------------|----------------------|--------------------------|------------|
+| 256        | 32.84                  | 32.86                     | 8,615                | 5.94                     | 5.87924    |
+| 512        | 33.34                  | 33.27                     | 4,151                | 24.67                    | 6.32152    |
+| 1024       | 33.05                  | 33.04                     | 7,394                | 27.70                    | 6.10848    |
+| 2048       | 34.10                  | 34.09                     | 13,866               | 29.54                    | 5.96367    |
+
+### Thoughts
+
+The average training rate remains consistent at ~33 samples/sec across all batch sizes (32.84 to 34.10 samples/sec), showing only 3.8% variance despite an 8× difference in batch size. This consistency shows that Cerebras maintains a pretty consistent per-sample processing speed regardless of batch configuration, minimizing the memory bottlenecks and communication overhead that typically plague multi-GPU training systems.
 
 ---
 

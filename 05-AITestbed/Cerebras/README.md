@@ -1,4 +1,5 @@
-# Cerebras CS-3
+   export HTTPS_PROXY=http://proxy.alcf.anl.gov:3128
+   pip install peft==0.17.1# Cerebras CS-3
 
 The Cerebras CS-3 is a wafer-scale deep learning accelerator comprising 900K processing cores, each providing 48KB of dedicated SRAM memory, with a total of 44GB on-chip memory. Its software platform integrates the popular machine learning framework PyTorch.
 
